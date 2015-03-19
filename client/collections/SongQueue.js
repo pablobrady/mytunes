@@ -2,12 +2,12 @@
 var SongQueue = Songs.extend({
 
   initialize: function(){
-    this.on('ended', function(model){
-      this.donePlaying();
-    }, this);
-    this.on('dequeue', function(model) {
-      this.remove(this);
-    }, this);
+    // this.on('ended', function(model){
+    //   this.donePlaying();
+    // }, this);
+    // this.on('dequeue', function(model) {
+    //   this.shift();
+    // }, this);
   },
   add: function() {
   	Songs.prototype.add.apply(this,arguments);

@@ -40,6 +40,7 @@ describe('SongQueue', function() {
   describe('when a song ends', function() {
     it('removes the song from the queue', function() {
       var songQueue = new SongQueue([songData1, songData2]);
+      new SongQueueView({model:songQueue});
       song2 = songQueue.at(1);
       expect(songQueue.length).to.equal(2);
       songQueue.at(0).trigger('ended');
@@ -50,6 +51,7 @@ describe('SongQueue', function() {
     describe('if there are any songs left in the queue', function() {
       it('plays the first song in the queue', function() {
         var songQueue = new SongQueue([songData1, songData2]);
+        new SongQueueView({model:songQueue});
         songQueue.at(0).ended();
         expect(playSpy).to.have.been.called;
       });
@@ -68,6 +70,7 @@ describe('SongQueue', function() {
     it('removes the song', function() {
       removeSpy = sinon.spy(SongQueue.prototype, 'remove');
       var songQueue = new SongQueue(songData1);
+      new SongQueueView({model:songQueue});
       songQueue.at(0).dequeue();
       expect(removeSpy).to.have.been.called;
       SongQueue.prototype.remove.restore();

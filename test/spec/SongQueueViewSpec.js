@@ -26,7 +26,6 @@ describe('SongQueueView', function() {
   it('renders when add or remove event fires from the song queue collection', function(){
     sinon.spy(SongQueueView.prototype, 'render');
     view = new SongQueueView({collection: fakeSongs});
-    debugger;
     view.collection.add({
       artist: 'data',
       url: '/test/testsong3.mp3',
