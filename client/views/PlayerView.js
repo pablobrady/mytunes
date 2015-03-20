@@ -6,10 +6,19 @@ var PlayerView = Backbone.View.extend({
   el: '<audio controls autoplay />',
 
   initialize: function() {
+    if (window.localStorage) {
+      this.el.volume = JSON.parse(window.localStorage.volume || "1");
+      this.el.muted = JSON.parse(window.localStorage.muted || "false");
+    }
+    var self = this;
+    this.el.onvolumechange = function() {
+      window.localStorage.volume = JSON.stringify(self.el.volume);
+      window.localStorage.muted = JSON.stringify(self.el.muted);
+    };
   },
 
   events: {
-    ended: function() { this.model.ended(); }
+    ended: function() { this.model.ended(); },
   },
 
   setSong: function(song){

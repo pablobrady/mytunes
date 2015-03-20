@@ -19,5 +19,10 @@ var songData = [
     url: "https://s3-us-west-1.amazonaws.com/hr-mytunes/data/06+If+Your+Girl+Only+Knew.mp3",
     title: "If Your Girl Only Knew",
     artist: "Aaliyah",
-  }
+  },
+  {
+    url: "http://www.columbia.edu/cu/cuo/F2001-6.mp3",
+    title: "Symphony No. 7 Part 1",
+    artist: "Beethoven",
+  },
 ];

@@ -2,18 +2,17 @@
 var SongQueue = Songs.extend({
 
   initialize: function(){
-    // this.on('ended', function(model){
-    //   this.donePlaying();
-    // }, this);
-    // this.on('dequeue', function(model) {
-    //   this.shift();
-    // }, this);
   },
   add: function() {
   	Songs.prototype.add.apply(this,arguments);
   	if(this.length===1) {
   		this.playFirst();
   	}
+    this.save();
+  },
+  remove: function() {
+    Songs.prototype.remove.apply(this,arguments);
+    this.save();
   },
   playFirst: function() {
     if (this.length > 0) {
@@ -23,7 +22,12 @@ var SongQueue = Songs.extend({
   donePlaying: function() {
   	this.shift();
   	this.playFirst();
-  }
+  },
+  save: function() {
+    if (window.localStorage) {
+      window.localStorage.songQueue = JSON.stringify(this.toJSON());
+    }
+  },
 
 
 });
